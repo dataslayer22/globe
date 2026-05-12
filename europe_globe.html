@@ -36,8 +36,8 @@ body {
   border-radius: 15px;
   box-shadow: 10px 10px 15px 5px rgba(0, 0, 0, 0.35);
   padding: 10px 10px 10px 10px;
-  font-size: 1.3rem;
-  line-height: 1;
+  font-size: 1.1rem;
+  line-height: 0.8;
   background-color: rgba(222, 215, 215, 0.45); /* Adds a 40% dark tint */
 }
 
@@ -94,7 +94,7 @@ const svg = d3.select("#globe")
 
 // Projection & path generator
 
-const initialScale = 350;
+const initialScale = 300;
 
 const projection = d3.geoOrthographic()
   .scale(initialScale) // size of the globe
