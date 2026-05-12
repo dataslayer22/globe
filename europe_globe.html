@@ -322,7 +322,9 @@ countryPaths = svg.selectAll("path")
 
 
     tooltip
-    
+    .style("left", `${600}px`)
+    .style("top", `${280}px`)
+    .style("display", "block")
 
     .html(() => {
         // Check if data exists for the clicked/hovered country
