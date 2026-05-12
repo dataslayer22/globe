@@ -84,8 +84,8 @@ body {
 
 
  // Dimensions
-const width = 800;
-const height = 900;
+const width = 700;
+const height = 700;
 
 // Select the SVG container
 const svg = d3.select("#globe")
@@ -321,8 +321,8 @@ countryPaths = svg.selectAll("path")
 
 
     tooltip
-    .style("left", `${x + 150}px`)
-    .style("top", `${y + 40}px`)
+    .style("left", `${x + 250}px`)
+    .style("top", `${y + 10}px`)
     .style("display", "block")
 
     .html(() => {
