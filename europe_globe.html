@@ -28,8 +28,9 @@ body {
 #tooltip {
   display: none;
   pointer-events: none;
-  position: absolute;
-  margin: 230px 0 0 300px;
+  position: fixed !important; /* Forces the element outside the centered container */
+  left: 300px;                /* Moves it exactly 300px from the screen's left edge */
+  top: 230px;  
   width: 260px;
   height: 240px;
   max-width: 350px;
@@ -322,7 +323,7 @@ countryPaths = svg.selectAll("path")
 
 
     tooltip
-
+     .style("display", "block")
     .html(() => {
         // Check if data exists for the clicked/hovered country
         if (!data || !data.conscription_type) {
