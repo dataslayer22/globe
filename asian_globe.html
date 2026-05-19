@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Rising defense spending</title>
+	<title>Active Conscription in Asia</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,8 +29,8 @@ body {
 #tooltip {
   display: none;
   pointer-events: none;
-  position: fixed !important; /* Forces the element outside the centered container */
-  left: 10px;                /* Moves it exactly 300px from the screen's left edge */
+  position: fixed !important;  
+  left: 10px;                 
   top: 240px;  
   width: 310px;
   height: 260px;
@@ -40,24 +40,24 @@ body {
   padding: 10px 10px 10px 10px;
   font-size: 0.8rem;
   line-height: 0.8;
-  background-color: rgba(222, 215, 215, 0.45); /* Adds a 40% dark tint */
+  background-color: rgba(222, 215, 215, 0.45);  
 }
 
 #tooltip h3 {
   font-weight: 700;
   color: rgb(31, 10, 10);
   font-size: 1.5rem;
-  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.35); /* Essential for extra clarity */
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.35);  
   margin-top: 5px;
   font-family: "Cinzel", sans-serif;
 }
 
 .defense_container {
   position: relative;
-  display: block;         /* Align children in a row */
-  align-items: left;   /* Center icon and text vertically */
-  gap: 8px;             /* Consistent space between icon and text */
-  margin-bottom: 5px;    /* Space between rows */
+  display: block;          
+  align-items: left;   
+  gap: 8px;              
+  margin-bottom: 5px;    
   color: #010b17;
   background-color: rgba(243, 243, 228, 0.634);
   padding: 3px 3px 5px 5px;
@@ -156,7 +156,7 @@ const globeRadius = projection.scale();
 const globeDiameter = globeRadius * 3.1;
 
 globeGroup.append("image")
-  .attr("xlink:href", "images/globe_ocean_texture_500.png") // replace with your texture file
+  .attr("xlink:href", "images/globe_ocean_texture_300.jpg") // replace with your texture file
   .attr("width", globeDiameter)
   .attr("height", globeDiameter)
   .attr("x", (width / 2) - (globeDiameter / 2))
@@ -199,15 +199,15 @@ const countryStats = {
 // Example: mapping ISO country codes to watercolor/landscape images
 // ISO 3166-1 numeric codes mapped to image filenames in /images
 const countryTextures = {
-  410: "south_korea_500.png ",    // South Korea
-  158: "taiwan_500.png", // Taiwan
-  702: "singapore_500.png",     // Singapore
-  764: "thailand_500.png",     // Thailand
-  704: "vietnam_500.png", // Vietnam
-  116: "cambodia_500.png", // Cambodia
-  408: "north_korea_500.png",    // North Korea
-  104: "myanmar_500.png",    // Myanmar
-  418: "laos_500.png", // Laos
+  410: "south_korea_300.jpg ",    // South Korea
+  158: "taiwan_300.jpg", // Taiwan
+  702: "singapore_300.jpg",     // Singapore
+  764: "thailand_300.jpg",     // Thailand
+  704: "vietnam_300.jpg", // Vietnam
+  116: "cambodia_300.jpg", // Cambodia
+  408: "north_korea_300.jpg",    // North Korea
+  104: "myanmar_300.jpg",    // Myanmar
+  418: "laos_300.jpg", // Laos
 };
 
 
@@ -232,7 +232,7 @@ const pattern2 = defs2.append("pattern")
   .attr("height", 1);
 
 pattern2.append("image")
-  .attr("xlink:href", "images/globe_landmass_texture.png")
+  .attr("xlink:href", "images/globe_landmass_texture_300.jpg")
   .attr("width", width)
   .attr("height", height)
   .attr("preserveAspectRatio", "xMidYMid slice");
@@ -245,7 +245,7 @@ const watermelonPattern = defs3.append("pattern")
   .attr("height", 1);
 
 watermelonPattern.append("image")
-  .attr("xlink:href", "images/watermelon_texture_500.png") // <-- your image file
+  .attr("xlink:href", "images/watermelon_texture_300.jpg") // <-- your image file
   .attr("width", width/3)
   .attr("height", height/3)
   .attr("preserveAspectRatio", "xMidYMid slice");
@@ -337,11 +337,12 @@ countryPaths = svg.selectAll("path")
     `;
     })
     .style(
-        "background-image",
-        `url(images/asian/${countryTextures[d.id] || ""})`
-    )
+    "background-image",
+    countryTextures[d.id] ? `url(images/asian/${countryTextures[d.id]})` : "none"
+)
+    .style("background-color", "#ffffff00") // Clean fallback color (e.g., dark grey) if image is missing
     .style("background-size", "cover")
-    .style("background-position", "center")        
+    .style("background-position", "center")     
 });
 
 
@@ -390,4 +391,4 @@ svg.call(d3.drag()
   </script>
 </body>
 
-</html>
+</html> 
