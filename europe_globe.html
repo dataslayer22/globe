@@ -155,7 +155,7 @@ const globeRadius = projection.scale();
 const globeDiameter = globeRadius * 3.1;
 
 globeGroup.append("image")
-  .attr("xlink:href", "images/globe_ocean_texture_500.png") // replace with your texture file
+  .attr("xlink:href", "images/globe_ocean_texture_300.jpg") // replace with your texture file
   .attr("width", globeDiameter)
   .attr("height", globeDiameter)
   .attr("x", (width / 2) - (globeDiameter / 2))
@@ -204,18 +204,18 @@ const countryStats = {
 // Example: mapping ISO country codes to watercolor/landscape images
 // ISO 3166-1 numeric codes mapped to image filenames in /images
 const countryTextures = {
-  246: "finland_3_500.png",    // Finland
-  440: "lithuania_500.png", // Lithuania
-  752: "sweden_500.png",     // Sweden
-  578: "norway_500.png",     // Norway
-  792: "turkey_3_500.png", // Turkey
-  756: "switzerland_500.png", // Switzerland
-  233: "estonia_2_500.png",    // Estonia
-  428: "latvia_3_500.png",    // Latvia
-  "040": "austria_500.png", // Austria
-  300: "greece_2_500.png", // Greece
-  196: "cyprus_500.png", // Cyprus
-  208: "denmark_500.png", //Denmark
+  246: "finland_300.jpg",    // Finland
+  440: "lithuania_300.jpg", // Lithuania
+  752: "sweden_300.jpg",     // Sweden
+  578: "norway_300.jpg",     // Norway
+  792: "turkey_300.jpg", // Turkey
+  756: "switzerland_300.jpg", // Switzerland
+  233: "estonia_300.jpg",    // Estonia
+  428: "latvia_300.jpg",    // Latvia
+  "040": "austria_300.jpg", // Austria
+  300: "greece_300.jpg", // Greece
+  196: "cyprus_300.jpg", // Cyprus
+  208: "denmark_300.jpg", //Denmark
 };
 
 
@@ -240,20 +240,20 @@ const pattern2 = defs2.append("pattern")
   .attr("height", 1);
 
 pattern2.append("image")
-  .attr("xlink:href", "images/globe_landmass_texture.png")
+  .attr("xlink:href", "images/globe_landmass_texture_300.jpg")
   .attr("width", width)
   .attr("height", height)
   .attr("preserveAspectRatio", "xMidYMid slice");
 
 // watermelon effect
 const watermelonPattern = defs3.append("pattern")
-  .attr("id", "watermelonWash")   // keep the same id so your existing fill logic works
+  .attr("id", "watermelonWash")    
   .attr("patternUnits", "objectBoundingBox")
   .attr("width", 1)
   .attr("height", 1);
 
 watermelonPattern.append("image")
-  .attr("xlink:href", "images/watermelon_texture_500.png") // <-- your image file
+  .attr("xlink:href", "images/watermelon_texture_300.jpg")  
   .attr("width", width/3)
   .attr("height", height/3)
   .attr("preserveAspectRatio", "xMidYMid slice");
@@ -345,11 +345,12 @@ countryPaths = svg.selectAll("path")
     `;
     })
     .style(
-        "background-image",
-        `url(images/europe/${countryTextures[d.id] || ""})`
-    )
+    "background-image",
+    countryTextures[d.id] ? `url(images/asian/${countryTextures[d.id]})` : "none"
+)
+    .style("background-color", "#ffffff00") // Clean fallback color (e.g., transparent) if image is missing
     .style("background-size", "cover")
-    .style("background-position", "center")        
+    .style("background-position", "center")   
 });
 
 
